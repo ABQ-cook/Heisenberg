@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Function Calling | 工具调用说明（单页）</title>
+  <style>
+    :root{
+      --bg:#0b1020;
+      --panel:#0f1733;
+      --text:#e8ecff;
+      --muted:#a9b3d6;
+      --brand:#7aa2ff;
+      --border:rgba(255,255,255,.10);
+      --code:#0a0f22;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+      --radius:14px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+              "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+              "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 10%, rgba(122,162,255,.18), transparent 55%),
+        radial-gradient(900px 600px at 85% 30%, rgba(180,120,255,.14), transparent 55%),
+        linear-gradient(180deg, var(--bg), #060a15 70%);
+    }
+    a{color:var(--brand); text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:1100px; margin:0 auto; padding:28px 18px 80px}
+    header{
+      display:flex; gap:18px; align-items:flex-start; justify-content:space-between;
+      padding:22px 22px;
+      border:1px solid var(--border);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+      box-shadow:var(--shadow);
+      border-radius:var(--radius);
+    }
+    .title h1{margin:0; font-size:26px; letter-spacing:.2px}
+    .title p{margin:8px 0 0; color:var(--muted); line-height:1.55}
+    .badge{
+      border:1px solid var(--border);
+      padding:8px 10px;
+      border-radius:999px;
+      color:var(--muted);
+      font-size:12px;
+      white-space:nowrap;
+      background:rgba(255,255,255,.03);
+    }
+    main{
+      display:grid;
+      grid-template-columns: 320px 1fr;
+      gap:18px;
+      margin-top:18px;
+      align-items:start;
+    }
+    nav, section.card{
+      border:1px solid var(--border);
+      background:rgba(255,255,255,.03);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+    }
+    nav{padding:16px 16px}
+    nav h2{margin:0 0 10px; font-size:14px; color:var(--muted); font-weight:600}
+    .toc{list-style:none; padding:0; margin:0; display:grid; gap:8px}
+    .toc a{
+      display:block;
+      padding:10px 10px;
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(0,0,0,.12);
+      color:var(--text);
+    }
+    .toc a small{display:block; margin-top:2px; color:var(--muted)}
+    .content{padding:18px 18px}
+    .content h2{margin:4px 0 10px; font-size:18px}
+    .content p{margin:0 0 12px; color:var(--muted); line-height:1.75}
+    .divider{height:1px; background:var(--border); margin:16px 0}
+    pre{
+      margin:0;
+      padding:14px 14px;
+      overflow:auto;
+      background:linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.10));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:12px;
+    }
+    code, pre code{font-family:var(--mono); font-size:13px; color:#eaf0ff}
+    .callout{
+      margin:12px 0 0;
+      padding:12px 12px;
+      border-radius:12px;
+      border:1px solid rgba(122,162,255,.28);
+      background:rgba(122,162,255,.08);
+      color:var(--text);
+    }
+    .muted{color:var(--muted)}
+    .footer{
+      margin-top:18px;
+      color:var(--muted);
+      font-size:12px;
+      text-align:center;
+      opacity:.9;
+    }
+    @media (max-width: 920px){
+      main{grid-template-columns: 1fr}
+      header{flex-direction:column}
+      .badge{align-self:flex-start}
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="title">
+        <h1>Function Calling</h1>
+        <p>基于 Notion 页面《Function Calling》整理的单页文档：包含工具 schema 示例与核心概念，适合快速复制与分享。</p>
+      </div>
+      <div class="badge">单页 HTML · 自包含样式</div>
+    </header>
+
+    <main>
+      <nav aria-label="目录">
+        <h2>目录</h2>
+        <ul class="toc">
+          <li><a href="#sec1">一、TOOLS_SCHEMA <small>给 LLM 的工具说明书</small></a></li>
+          <li><a href="#sec2">二、（待补充） <small>当前页面后续内容为空</small></a></li>
+        </ul>
+        <div class="callout">
+          <div><strong>说明</strong></div>
+          <div class="muted" style="margin-top:6px; line-height:1.7">
+            本页内容来自你当前 Notion 页面可见部分。若你把“二、”后续补全，我也可以按同样风格继续扩展这一页。
+          </div>
+        </div>
+      </nav>
+
+      <section class="card content">
+        <h2 id="sec1">一、TOOLS_SCHEMA：给 LLM 的一份工具说明书</h2>
+        <p>一份依据 OpenAI 的 TOOLS_SCHEMA 示例（用于向模型描述可调用的函数、参数结构与必填字段）。</p>
+
+        <pre><code class="language-python">TOOLS_SCHEMA = [
+    {
+        "type": "function",
+        "function": {
+            "name": "get_weather",
+            "description": "查询指定城市的当前天气",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "city": {
+                        "type": "string",
+                        "description": "城市名，例如 '北京'、'上海'",
+                    }
+                },
+                "required": ["city"],
+            },
+        },
+    }
+]</code></pre>
+
+        <div class="divider"></div>
+
+        <h2 id="sec2">二、（当前页面未提供后续正文）</h2>
+        <p>你的 Notion 页面在“二、”之后暂时没有更多可见内容。如果你希望这个单页更完整，可以把后续段落补上，或把你想要的结构告诉我（例如：添加“工作流说明 / 错误处理 / 最佳实践 / 示例对话”）。</p>
+      </section>
+    </main>
+
+    <div class="footer">
+      生成：基于 Notion 页面《Function Calling》内容（当前可见部分）
+    </div>
+  </div>
+</body>
+</html>
