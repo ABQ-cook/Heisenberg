@@ -1,0 +1,35 @@
+# python
+__pycache__
+*.pyc
+*.pyo
+*.egg-info/
+
+# IDE/编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 临时文件
+*.bak
+*.tmp
+*.temp
+_tmp_crash.py
+_tmp_diag.ps1
+_tmp_dll.py
+_tmp_pe.py
+_tmp_run.py
+_tmp_rune.py
+rw_log.txt
+rw_log2.txt
+
+
+# 个人计划
+8周实习冲刺计划.md
+8周实习冲刺计划 copy.md
+Git操作使用说明.md
