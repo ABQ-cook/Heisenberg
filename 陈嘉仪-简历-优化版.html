@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈嘉仪 · 个人简历 · 大模型应用开发</title>
+<style>
+  :root{
+    --accent:#0f4c81;
+    --accent-soft:#eaf2fa;
+    --accent-line:#cfe0f1;
+    --ink:#1f2937;
+    --ink2:#4b5563;
+    --ink3:#7c8798;
+    --line:#e3e8ef;
+    --ph-bg:#fff7ed;
+    --ph-ink:#c2410c;
+    --ph-line:#fdba74;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:#eceff4;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:11.8px;line-height:1.5;
+    padding:18px 12px 36px;
+    -webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+
+  /* ============ 顶部填写提示（不打印） ============ */
+  .notice{
+    width:210mm;margin:0 auto 12px;background:#fff;border:1px solid var(--line);
+    border-left:4px solid var(--ph-line);border-radius:8px;padding:10px 14px;
+    font-size:11.5px;color:var(--ink2);line-height:1.6;
+  }
+  .notice h4{font-size:12px;color:var(--ph-ink);margin-bottom:4px;}
+  .notice ol{margin-left:17px;}
+  .notice li{margin:0.5px 0;}
+  .notice code{background:var(--ph-bg);color:var(--ph-ink);padding:0 3px;border-radius:2px;font-size:11px;}
+
+  /* ============ 纸张 ============ */
+  .page{
+    width:210mm;margin:0 auto;background:#fff;
+    padding:11mm 12mm 10mm;
+    box-shadow:0 4px 26px rgba(15,23,42,.13);
+  }
+
+  /* ============ 页眉 ============ */
+  .header{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+    padding-bottom:6px;border-bottom:2.5px solid var(--accent);
+  }
+  .head-main{flex:1;min-width:0;}
+  .name{font-size:26px;font-weight:800;letter-spacing:4px;line-height:1.08;}
+  .intent{
+    margin-top:5px;font-size:11.8px;font-weight:600;color:var(--accent);
+    background:var(--accent-soft);border:1px solid var(--accent-line);
+    border-radius:4px;padding:2px 9px;display:inline-block;
+  }
+  .intent span{color:var(--ink3);font-weight:500;margin-left:6px;font-size:10.8px;}
+  .contact{
+    display:grid;grid-template-columns:1fr 1fr;gap:0 16px;
+    margin-top:6px;font-size:11.8px;color:var(--ink2);line-height:1.62;
+  }
+  .contact .k{color:var(--ink3);margin-right:4px;}
+  .contact .sep{color:var(--line);margin:0 6px;}
+
+  /* ---- 照片位（一寸：25 × 35 mm）---- */
+  .photo{
+    flex:0 0 25mm;width:25mm;height:35mm;
+    border:1px dashed var(--ph-line);border-radius:4px;background:var(--ph-bg);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+    color:var(--ph-ink);font-size:10.5px;line-height:1.3;text-align:center;overflow:hidden;
+  }
+  .photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .photo img ~ span{display:none;}
+
+  /* ============ 区块标题 ============ */
+  .section{margin-top:5px;}
+  .sec-title{
+    display:flex;align-items:center;gap:7px;
+    font-size:12.5px;font-weight:700;color:var(--accent);letter-spacing:.8px;
+    padding-bottom:2px;border-bottom:1px solid var(--line);margin-bottom:4px;
+  }
+  .sec-title::before{
+    content:"";width:4px;height:13px;border-radius:2px;background:var(--accent);
+  }
+  .sec-title em{
+    font-style:normal;font-size:10px;font-weight:500;color:var(--ink3);
+    letter-spacing:0;margin-left:1px;
+  }
+
+  /* ============ 教育背景 ============ */
+  .edu-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+  .edu-head .school{font-size:13px;font-weight:700;}
+  .edu-head .school span{font-weight:600;color:var(--ink2);margin-left:6px;}
+  .edu-head .date{font-size:11.8px;color:var(--ink3);white-space:nowrap;}
+  .edu-line{margin-top:1.5px;color:var(--ink2);}
+  .edu-line .k{color:var(--ink);font-weight:600;}
+
+  /* ============ 专业技能 ============ */
+  .skill{display:flex;gap:9px;padding:1px 0;align-items:baseline;}
+  .skill .sk-label{
+    flex:0 0 88px;font-weight:600;color:var(--accent);font-size:11.8px;white-space:nowrap;
+  }
+  .skill .sk-body{color:var(--ink2);flex:1;}
+  .skill .sk-body b{color:var(--ink);font-weight:600;}
+
+  /* ============ 项目 ============ */
+  .proj{margin-bottom:4px;}
+  .proj:last-child{margin-bottom:0;}
+  .proj-head{
+    display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    padding-left:8px;border-left:3px solid var(--accent);
+  }
+  .proj-head .ptitle{font-size:12.8px;font-weight:700;}
+  .proj-head .pmeta{font-size:11.2px;color:var(--ink3);white-space:nowrap;}
+  .proj-stack{
+    margin:3px 0 2px;font-size:11.5px;color:var(--ink2);
+    background:#f7f9fc;border-radius:3px;padding:2px 7px;
+  }
+  .proj-stack .k{color:var(--accent);font-weight:600;}
+  .proj-desc{margin:1px 0 2px;color:var(--ink2);text-align:justify;}
+  .duty-title{font-size:11.8px;font-weight:700;color:var(--ink);margin:3px 0 1px;}
+  ul.duty{list-style:none;}
+  ul.duty li{
+    position:relative;padding-left:12px;margin-bottom:1px;text-align:justify;color:var(--ink2);
+  }
+  ul.duty li::before{
+    content:"";position:absolute;left:2px;top:.58em;width:4px;height:4px;
+    border-radius:50%;background:var(--accent);opacity:.75;
+  }
+  ul.duty li .tag{color:var(--accent);font-weight:700;}
+
+  /* ============ 荣誉 / 个人优势 ============ */
+  ul.awards{list-style:none;color:var(--ink2);}
+  ul.awards li{position:relative;padding-left:12px;}
+  ul.awards li::before{
+    content:"";position:absolute;left:2px;top:.58em;width:4px;height:4px;
+    border-radius:50%;background:var(--accent);opacity:.75;
+  }
+  ul.awards li b{color:var(--ink);font-weight:600;}
+
+  ul.eval{list-style:none;}
+  ul.eval li{
+    position:relative;padding-left:12px;margin-bottom:1px;color:var(--ink2);text-align:justify;
+  }
+  ul.eval li::before{
+    content:"";position:absolute;left:2px;top:.58em;width:4px;height:4px;
+    border-radius:50%;background:var(--accent);opacity:.75;
+  }
+  ul.eval li .tag{color:var(--accent);font-weight:700;}
+
+  /* ============ 待补充占位 ============ */
+  .ph{
+    background:var(--ph-bg);color:var(--ph-ink);
+    border-bottom:1px dashed var(--ph-line);border-radius:2px;
+    padding:0 2px;font-size:11.2px;font-weight:500;
+  }
+
+  /* ============ 打印 ============ */
+  @page{size:A4;margin:7mm 11mm;}
+  @media print{
+    body{background:#fff;padding:0;font-size:11.3px;line-height:1.43;}
+    .notice{display:none;}
+    .page{width:auto;margin:0;padding:0;box-shadow:none;}
+
+    /* 允许长项目跨页流动，避免整块跳页产生大片空白 */
+    .section,.proj,.edu{break-inside:auto;page-break-inside:auto;}
+    ul.duty li,ul.awards li,ul.eval li,.skill{break-inside:avoid;page-break-inside:avoid;}
+    .sec-title,.duty-title,.proj-head,.proj-stack,.proj-desc{
+      break-after:avoid;page-break-after:avoid;
+    }
+    p,li{orphans:2;widows:2;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= 填写提示（打印时自动隐藏） ================= -->
+<div class="notice">
+  <h4>使用说明：橙色虚线处为建议补充项，填好后请删除本提示框（打印不会输出）</h4>
+  <ol>
+    <li><code>照片</code> —— 页眉右上角已预留一寸照位（25 × 35 mm），把 <code>.photo</code> 里注释的 <code>&lt;img&gt;</code> 打开并填路径，再删掉「照片」占位文字</li>
+    <li><code>GPA / 专业排名</code> —— 应届生第一道筛选指标，建议填「3.6 / 5.0」或「前 15%」</li>
+    <li><code>项目周期 / 团队角色</code> —— 两个项目都要补，写清起止年月与负责模块</li>
+    <li><code>量化结果</code> —— 检索准确率等有真实数据就填，没有则整句删除，不要编造</li>
+    <li><code>GitHub 链接</code> —— 若两个项目可开源，强烈建议补上仓库地址</li>
+  </ol>
+</div>
+
+<!-- ================= 简历正文 ================= -->
+<div class="page">
+
+  <!-- ---- 页眉 ---- -->
+  <header class="header">
+    <div class="head-main">
+      <div class="name">陈嘉仪</div>
+      <div class="intent">求职意向：大模型应用开发 / AI Agent 开发工程师
+        <span>2027 届 · 本科</span>
+      </div>
+      <div class="contact">
+        <div><span class="k">电话</span>15352065317</div>
+        <div><span class="k">邮箱</span>3417280788@qq.com</div>
+        <div><span class="k">出生年月</span>2004.11</div>
+        <div><span class="k">政治面貌</span>中共预备党员</div>
+        <div><span class="k">籍贯</span>甘肃<span class="sep">|</span><span class="k">英语</span>CET-4</div>
+        <div><span class="k">GitHub</span><span class="ph">待补充</span></div>
+      </div>
+    </div>
+
+    <!-- 【照片位】需换真实照片时：把下面注释里的 img 标签打开、路径改成你的照片文件，
+         再把两行 span 占位文字删掉即可（照片会按 25×35mm 自动裁切填满） -->
+    <div class="photo">
+      <!-- <img src="photo.jpg" alt="证件照"> -->
+      <span>照片</span>
+      <span style="font-size:10px;opacity:.85">一寸 25 × 35 mm</span>
+    </div>
+  </header>
+
+  <!-- ---- 教育背景 ---- -->
+  <section class="section">
+    <div class="sec-title">教育背景 <em>EDUCATION</em></div>
+    <div class="edu">
+      <div class="edu-head">
+        <div class="school">宁夏师范大学<span>人工智能（本科）</span></div>
+        <div class="date">2023.09 – 2027.06</div>
+      </div>
+      <div class="edu-line">
+        <span class="k">GPA / 专业排名：</span><span class="ph">待补充</span>
+        <span style="margin:0 7px;color:var(--line)">|</span>
+        <span class="k">英语：</span>CET-4
+      </div>
+      <div class="edu-line">
+        <span class="k">主修课程：</span>机器学习、深度学习、自然语言处理、计算机视觉、数据结构与算法、数据库、计算机网络
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- 专业技能 ---- -->
+  <section class="section">
+    <div class="sec-title">专业技能 <em>SKILLS</em></div>
+    <div class="skill">
+      <div class="sk-label">编程与算法</div>
+      <div class="sk-body"><b>Python</b>（熟练）、<b>MySQL</b>、C 语言基础；熟悉 <b>Transformer / RNN / LSTM</b> 工作原理，了解 <b>PyTorch</b> 及线性回归、KNN、K-Means 等经典算法</div>
+    </div>
+    <div class="skill">
+      <div class="sk-label">大模型与智能体</div>
+      <div class="sk-body"><b>LangChain / LangGraph</b>（多节点状态编排、节点路由、人在回路、多角色业务智能体）、<b>Function Calling</b>、提示词工程、<b>MCP 工具封装</b>、智能体系统评估</div>
+    </div>
+    <div class="skill">
+      <div class="sk-label">RAG 检索增强</div>
+      <div class="sk-body">全链路开发：文档解析 → 切片 → 向量化 → 多路召回 → 重排序优化；向量库使用；基于 <b>RAGAS</b> 完成检索效果量化评估，通过调优降低模型幻觉</div>
+    </div>
+    <div class="skill">
+      <div class="sk-label">后端与工程化</div>
+      <div class="sk-body"><b>FastAPI</b> 高性能接口开发，遵循 RESTful 规范；<b>Pydantic</b> 校验、流式响应与接口联调；接口鉴权、SQL 注入防护、审计日志；<b>Git</b>、Linux 常用命令、<b>Docker</b> 容器化部署</div>
+    </div>
+  </section>
+
+  <!-- ---- 项目经历 ---- -->
+  <section class="section">
+    <div class="sec-title">项目经历 <em>PROJECTS</em></div>
+
+    <!-- 项目一 -->
+    <div class="proj">
+      <div class="proj-head">
+        <div class="ptitle">基于 LangGraph 的物流调度智能 Agent 系统</div>
+        <div class="pmeta"><span class="ph">2025.__ – 2025.__</span> ｜ <span class="ph">__ 人团队 · 负责 __</span></div>
+      </div>
+      <div class="proj-stack">
+        <span class="k">使用技术：</span>Python、FastAPI、LangGraph、MySQL、MCP、Docker、Chroma
+      </div>
+      <div class="proj-desc">
+        针对物流调度依赖人工经验、制度查询低效、报销流程繁琐且存在数据越权风险的痛点，搭建基于 LangGraph 的物流调度智能 Agent 系统，融合 RAG 制度问答、司机多维打分与冲突检测、AI 推荐 + 人工复核派单、路线沙盘推演与报销自动化审批。
+      </div>
+      <div class="duty-title">核心职责</div>
+      <ul class="duty">
+        <li><span class="tag">【智能体编排】</span>基于 LangGraph 设计多节点状态机，串联意图分类、决策、工具路由、人工审核与记忆存储链路；以角色工具集隔离三角色权限，落地 interrupt 人在回路机制，对派单、沙盘、报销等高风险操作强制拦截确认。</li>
+        <li><span class="tag">【派单与沙盘推演】</span>设计五维加权司机打分模型与冲突检测机制，筛选推荐 Top10 候选司机；搭建沙盘路线预演，模拟距离、耗时、油费、过路费、天气路况六项指标，实现派单时间与费用预估。</li>
+        <li><span class="tag">【报销审批】</span>负责报销业务前后端开发，基于多模态 OCR 自动提取发票信息，支持草稿增删改查与批量提交；搭建管理员审批体系，实现费用差值预警与审批通过／驳回全链路流转，并采用草稿表与正式单据表双表隔离架构。</li>
+        <li><span class="tag">【RAG 混合检索】</span>搭建 BM25 + 向量语义 + 重排序的多路召回架构，解决单一向量检索对专业术语、规则条款匹配精度低的问题；完成覆盖精确率、召回率、忠实度、问答相关性的 RAGAS 评估<span class="ph">，准确率 __% → __%</span>。</li>
+        <li><span class="tag">【安全与评估】</span>基于 JWT + RBAC 构建多级权限管控，建立 SQL 安全拦截防范注入；搭建覆盖 Agent 端到端能力、检索质量与接口功能的多维评估体系，结合自动化测试与 LLM-as-Judge 智能评审。</li>
+      </ul>
+    </div>
+
+    <!-- 项目二 -->
+    <div class="proj">
+      <div class="proj-head">
+        <div class="ptitle">基于 MCP 与 RAG 的企业智能办公助手系统</div>
+        <div class="pmeta"><span class="ph">2025.__ – 2025.__</span> ｜ <span class="ph">__ 人团队 · 负责 __</span></div>
+      </div>
+      <div class="proj-stack">
+        <span class="k">使用技术：</span>Python、FastAPI、LangChain、MCP、ReAct Agent、Chroma、MySQL
+      </div>
+      <div class="proj-desc">
+        针对企业制度查阅繁琐、报销审批效率低、财务数据存在安全风险等痛点，构建融合 MCP 工具推理与 RAG 知识库的企业智能办公助手，支持制度问答、财务查询、线上报销审批与多工具协同调度。
+      </div>
+      <div class="duty-title">核心职责</div>
+      <ul class="duty">
+        <li><span class="tag">【MCP 工具开发】</span>基于 FastMCP 封装办公工具并通过 HTTP 协议对外暴露，落地 MCP 协议原语规范；采用业务层与工具定义层解耦设计，提升工具复用性与系统扩展性。</li>
+        <li><span class="tag">【RAG 检索系统】</span>负责企业 PDF 解析、切片与向量化入库，基于 Chroma 构建向量知识库；设计向量 + BM25 混合检索提升专有名词检索准确率<span class="ph">（__% → __%）</span>，并实现知识库断点续加载以优化更新效率。</li>
+        <li><span class="tag">【ReAct 智能体编排】</span>基于 LangChain 搭建多轮迭代 ReAct Agent 调度框架，以系统提示词约束工具调用逻辑；统一清洗 RAG、MCP、数据库等异构返回数据，实现多工具协同调用与结果整合。</li>
+        <li><span class="tag">【审批与权限】</span>实现报销单据提交、审批流转、状态更新等后端接口与数据持久化；搭建 RBAC 两级权限体系，实现员工数据隔离与管理员全局管控。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ---- 荣誉奖项 ---- -->
+  <section class="section">
+    <div class="sec-title">荣誉奖项 <em>HONORS</em></div>
+    <ul class="awards">
+      <li><b>2024 – 2025 学年　</b>校级一等奖学金<span class="ph">（专业前 __%）</span>、校级优秀干部；<b>2023 – 2024 / 2025 – 2026 学年　</b>校级二等奖学金</li>
+    </ul>
+  </section>
+
+  <!-- ---- 个人优势 ---- -->
+  <section class="section">
+    <div class="sec-title">个人优势 <em>STRENGTHS</em></div>
+    <ul class="eval">
+      <li><span class="tag">【工程思维】</span>习惯用「打日志 → 看中间状态 → 缩小范围」的方式定位根因；在大模型参数被错误填充的实践中总结出「提示词引导 + 代码兜底」的双层防御思路。</li>
+      <li><span class="tag">【学习钻研】</span>对大模型、智能体方向兴趣浓厚，学习主动性强，能快速上手 LangGraph、MCP 等新框架并落地为完整可运行项目。</li>
+      <li><span class="tag">【协作执行】</span>长期担任班级干部，具备任务统筹与沟通协调能力；工作积极主动、抗压能力强，擅长拆解目标并稳步推进。</li>
+    </ul>
+  </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>陈嘉仪 · 简历优化与填写建议</title>
+<style>
+  :root{
+    --accent:#0f4c81;
+    --accent-soft:#eaf2fa;
+    --accent-line:#cfe0f1;
+    --ink:#1f2937;
+    --ink2:#4b5563;
+    --ink3:#7c8798;
+    --line:#e3e8ef;
+    --good:#0f7b52;
+    --good-bg:#ecfdf5;
+    --good-line:#a7f3d0;
+    --warn:#b45309;
+    --warn-bg:#fffbeb;
+    --warn-line:#fde68a;
+    --bad:#b91c1c;
+    --bad-bg:#fef2f2;
+    --bad-line:#fecaca;
+    --ph-bg:#fff7ed;
+    --ph-ink:#c2410c;
+    --ph-line:#fdba74;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:#eceff4;
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    font-size:14px;line-height:1.72;
+    padding:26px 14px 60px;
+    -webkit-font-smoothing:antialiased;
+    -webkit-print-color-adjust:exact;print-color-adjust:exact;
+  }
+
+  .wrap{max-width:920px;margin:0 auto;}
+
+  /* ===== 文档头 ===== */
+  .doc-head{
+    background:#fff;border-radius:12px;padding:26px 30px;
+    box-shadow:0 4px 26px rgba(15,23,42,.10);
+    border-top:5px solid var(--accent);margin-bottom:18px;
+  }
+  .doc-head h1{font-size:25px;font-weight:800;letter-spacing:1px;color:var(--accent);}
+  .doc-head .sub{margin-top:6px;color:var(--ink2);font-size:14px;}
+  .doc-head .meta{
+    margin-top:12px;display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .doc-head .meta span{
+    background:var(--accent-soft);border:1px solid var(--accent-line);color:var(--accent);
+    border-radius:999px;padding:2px 12px;font-size:12.5px;font-weight:600;
+  }
+
+  /* ===== 卡片 ===== */
+  .card{
+    background:#fff;border-radius:12px;padding:22px 30px 24px;
+    box-shadow:0 4px 26px rgba(15,23,42,.08);margin-bottom:18px;
+  }
+
+  .sec-title{
+    display:flex;align-items:center;gap:9px;
+    font-size:17px;font-weight:800;color:var(--accent);letter-spacing:.5px;
+    padding-bottom:8px;border-bottom:1px solid var(--line);margin-bottom:14px;
+  }
+  .sec-title::before{
+    content:"";width:5px;height:18px;border-radius:3px;background:var(--accent);
+  }
+  .sec-title em{
+    font-style:normal;font-size:11px;font-weight:600;color:var(--ink3);
+    letter-spacing:1px;margin-left:2px;
+  }
+
+  /* ===== 结论条 ===== */
+  .verdict{
+    display:flex;gap:12px;align-items:flex-start;
+    background:var(--good-bg);border:1px solid var(--good-line);
+    border-left:4px solid var(--good);border-radius:8px;padding:13px 16px;
+    margin-bottom:6px;
+  }
+  .verdict b{color:var(--good);}
+  .verdict .big{font-size:15.5px;font-weight:800;color:var(--good);display:block;margin-bottom:2px;}
+
+  /* ===== 表格 ===== */
+  table{width:100%;border-collapse:collapse;font-size:13.3px;}
+  thead th{
+    background:var(--accent);color:#fff;font-weight:700;text-align:left;
+    padding:9px 12px;font-size:13px;white-space:nowrap;
+  }
+  thead th:first-child{border-radius:7px 0 0 0;}
+  thead th:last-child{border-radius:0 7px 0 0;}
+  tbody td{
+    padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2);
+  }
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:nth-child(even){background:#fafbfd;}
+  tbody td:first-child{font-weight:700;color:var(--ink);white-space:nowrap;}
+
+  /* ===== 列表 ===== */
+  ol.steps{list-style:none;counter-reset:s;}
+  ol.steps>li{
+    counter-increment:s;position:relative;padding:2px 0 12px 40px;
+    border-bottom:1px dashed var(--line);margin-bottom:12px;
+  }
+  ol.steps>li:last-child{border-bottom:none;margin-bottom:0;padding-bottom:2px;}
+  ol.steps>li::before{
+    content:counter(s);position:absolute;left:0;top:3px;
+    width:24px;height:24px;border-radius:50%;
+    background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ol.steps>li>.h{font-weight:800;color:var(--ink);font-size:14.5px;}
+  ol.steps>li>.h .badge{margin-left:8px;}
+
+  ul.dot{list-style:none;margin-top:4px;}
+  ul.dot>li{position:relative;padding-left:15px;margin-bottom:3px;color:var(--ink2);}
+  ul.dot>li::before{
+    content:"";position:absolute;left:3px;top:.62em;width:5px;height:5px;border-radius:50%;
+    background:var(--accent);opacity:.72;
+  }
+  ul.dot>li b{color:var(--ink);}
+
+  /* ===== 徽标 ===== */
+  .badge{
+    display:inline-block;border-radius:5px;padding:1px 9px;
+    font-size:11.5px;font-weight:700;letter-spacing:.3px;white-space:nowrap;
+  }
+  .b-bad{background:var(--bad-bg);color:var(--bad);border:1px solid var(--bad-line);}
+  .b-warn{background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn-line);}
+  .b-good{background:var(--good-bg);color:var(--good);border:1px solid var(--good-line);}
+  .b-info{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent-line);}
+
+  /* ===== 提示框 ===== */
+  .note{
+    border-radius:8px;padding:11px 15px;margin-top:11px;font-size:13.3px;
+    border:1px solid var(--accent-line);background:var(--accent-soft);color:var(--accent);
+  }
+  .note.warn{border-color:var(--warn-line);background:var(--warn-bg);color:var(--warn);}
+  .note.bad{border-color:var(--bad-line);background:var(--bad-bg);color:var(--bad);}
+  .note strong{font-weight:800;}
+
+  /* ===== 占位符样式 ===== */
+  .ph{
+    background:var(--ph-bg);color:var(--ph-ink);
+    border-bottom:1px dashed var(--ph-line);border-radius:2px;
+    padding:0 3px;font-size:13px;font-weight:600;
+  }
+
+  /* ===== 清单 ===== */
+  .check{list-style:none;}
+  .check>li{
+    position:relative;padding:7px 0 7px 30px;border-bottom:1px solid var(--line);
+    color:var(--ink2);
+  }
+  .check>li:last-child{border-bottom:none;}
+  .check>li::before{
+    content:"\2610";position:absolute;left:2px;top:6px;font-size:16px;color:var(--accent);
+  }
+  .check>li b{color:var(--ink);font-weight:700;}
+
+  .priority{
+    background:#fff;border-radius:12px;padding:18px 24px 20px;
+    box-shadow:0 4px 26px rgba(15,23,42,.08);margin-bottom:18px;
+  }
+  .p-row{display:flex;gap:12px;padding:9px 0;border-bottom:1px dashed var(--line);}
+  .p-row:last-child{border-bottom:none;}
+  .p-row .lv{flex:0 0 82px;}
+  .p-row .txt{flex:1;color:var(--ink2);}
+  .p-row .txt b{color:var(--ink);}
+
+  /* ===== 结尾 ===== */
+  .footer{
+    text-align:center;color:var(--ink3);font-size:12.5px;margin-top:6px;line-height:1.9;
+  }
+  .footer .quote{
+    display:inline-block;margin-top:8px;padding:10px 18px;border-radius:8px;
+    background:#fff;border:1px solid var(--line);color:var(--ink2);text-align:left;
+    box-shadow:0 3px 16px rgba(15,23,42,.06);
+  }
+
+  /* ===== 打印 ===== */
+  @page{size:A4;margin:12mm 10mm;}
+  @media print{
+    body{background:#fff;padding:0;font-size:12px;line-height:1.5;}
+    .wrap{max-width:none;}
+    .card,.doc-head,.priority{box-shadow:none;border:1px solid var(--line);page-break-inside:auto;}
+    .card{padding:14px 18px 16px;margin-bottom:12px;}
+    .doc-head{padding:16px 18px;}
+    table{font-size:11.5px;}
+    ol.steps>li,table,tr{break-inside:avoid;page-break-inside:avoid;}
+    .sec-title{break-after:avoid;page-break-after:avoid;}
+  }
+  @media (max-width:640px){
+    body{padding:14px 8px 40px;}
+    .card,.doc-head,.priority{padding:16px 16px 18px;}
+    table{font-size:12px;}
+    thead th,tbody td{padding:7px 8px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ================= 文档头 ================= -->
+  <div class="doc-head">
+    <h1>陈嘉仪 · 简历优化评估与填写建议</h1>
+    <div class="sub">对照原版《陈嘉仪---本科-.pdf》与《陈嘉仪-简历-优化版.pdf / .html》的逐项评估结果</div>
+    <div class="meta">
+      <span>求职方向：大模型应用开发 / AI Agent 开发</span>
+      <span>2027 届 · 本科</span>
+      <span>结论：优化成功，但需补齐占位信息后投递</span>
+    </div>
+  </div>
+
+  <!-- ================= 一、总体结论 ================= -->
+  <div class="card">
+    <div class="sec-title">一、总体结论 <em>VERDICT</em></div>
+    <div class="verdict">
+      <div>
+        <span class="big">本次优化是成功的，改进幅度很大。</span>
+        原版属于典型的「学生自述型」简历（3 页、流水账、含大量感想式空话）；优化版已接近牛客网 / 超级简历等主流模板推荐的「技术岗校招简历」标准。
+        但需注意：<b>当前版本本质上仍是一份「待填写模板」</b>，把下方占位信息落实（或删除）之后才建议正式投递。
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= 二、优化成功之处 ================= -->
+  <div class="card">
+    <div class="sec-title">二、优化成功之处 <em>IMPROVEMENTS</em></div>
+    <table>
+      <thead>
+        <tr><th>维度</th><th>原版</th><th>优化版</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>篇幅</td>
+          <td>3 页（HR 大忌，校招普遍要求一页 A4）</td>
+          <td>1 页 <span class="badge b-good">达标</span></td>
+        </tr>
+        <tr>
+          <td>求职意向</td>
+          <td>无</td>
+          <td>明确写出「大模型应用开发 / AI Agent 开发工程师」，并标注 2027 届 <span class="badge b-good">达标</span></td>
+        </tr>
+        <tr>
+          <td>项目经历</td>
+          <td>堆砌职责 + 大段「项目收获」感想</td>
+          <td>按【标签】分点、动词开头，删除感想改为「个人优势」区 <span class="badge b-good">达标</span></td>
+        </tr>
+        <tr>
+          <td>技能区</td>
+          <td>描述冗长，含「可阅读简单代码」等减分表述</td>
+          <td>分类紧凑、关键词密度高，利于机器解析与 HR 10 秒扫读 <span class="badge b-good">达标</span></td>
+        </tr>
+        <tr>
+          <td>版式</td>
+          <td>普通表单式</td>
+          <td>模块化分区、左右栏、技术栈标注行，层级清晰 <span class="badge b-good">达标</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ================= 三、仍需改进 ================= -->
+  <div class="card">
+    <div class="sec-title">三、仍需改进的问题（8 项） <em>TO FIX</em></div>
+
+    <ol class="steps">
+
+      <li>
+        <div class="h">所有量化数据都是占位符 <span class="badge b-bad">最致命</span></div>
+        <ul class="dot">
+          <li>当前存在的占位：<span class="ph">准确率 __% → __%</span>、<span class="ph">专业前 __%</span>、<span class="ph">（__% → __%）</span>。</li>
+          <li>牛客网 HR 反馈一致：没有数字的项目经历，说服力减半。</li>
+          <li>投递前必须二选一：<b>填入真实数据</b>，或<b>整句删除</b>——留着占位符等于告诉 HR「这份简历没写完」，观感比不写更差。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">项目时间、团队规模、角色全部空缺 <span class="badge b-warn">高优先级</span></div>
+        <ul class="dot">
+          <li>占位处：<span class="ph">2025.__ – 2025.__</span> ｜ <span class="ph">__ 人团队 · 负责 __</span>（两个项目共 2 处）。</li>
+          <li>HR 非常看重时间线（是否有重叠、是否持续投入）与你的真实角色（负责人 or 成员）。</li>
+          <li>缺失会直接引发诚信层面的疑虑。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">照片与 GitHub 未填 <span class="badge b-warn">高优先级</span></div>
+        <ul class="dot">
+          <li>一寸照占位框仍显示「照片 · 一寸 25×35mm」；国内投递放一张正式证件照是加分项（技术岗可放可不放）。</li>
+          <li>GitHub 对大模型岗几乎是刚需——两个项目若可开源，附仓库链接是应届生证明真实性的最强手段。</li>
+          <li>若不愿公开，<b>请直接删除该行</b>，不要保留「待补充」。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">缺少可验证的「结果（Result）」描述 <span class="badge b-warn">高优先级</span></div>
+        <ul class="dot">
+          <li>现有职责几乎全是「做了什么（Action）」，缺乏「效果如何（Result）」。</li>
+          <li>建议每条职责尽量落到可衡量指标：性能 / 准确率提升、接口响应时间、并发量、文档数量、工具数量、测试覆盖率等。</li>
+          <li>示例改写：「支持草稿增删改查」→「支撑 X 类报销场景、管理 X 份单据」。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">技能措辞需与真实水平对齐并统一 <span class="badge b-info">中优先级</span></div>
+        <ul class="dot">
+          <li>删除「了解 C 语言基础语法，可阅读简单代码」这类自我贬低式描述是正确的；但优化版「C 语言基础」仍偏弱，<b>若不投 C 相关岗建议直接删</b>。</li>
+          <li>「Python（熟练）」与「了解 PyTorch」并列时面试官必追问 PyTorch——建议补一句你实际用它做过什么（哪怕是课程作业的线性回归 / KNN 复现），否则降级表述。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">荣誉奖项信息偏薄 <span class="badge b-info">中优先级</span></div>
+        <ul class="dot">
+          <li>3 次校级奖学金 + 优秀干部本身不错，但挤在一行显得单薄。</li>
+          <li>建议补齐排名百分比；如有竞赛（蓝桥杯、数学建模、挑战杯、各类 AI 大赛）、四六级分数、计算机等级证书，都值得列出。</li>
+          <li>2027 届现在到大四还有时间，建议再刷 1–2 个证书或竞赛奖项。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">个人优势区仍偏「自评」 <span class="badge b-info">中优先级</span></div>
+        <ul class="dot">
+          <li>「学习主动性强、抗压能力强」是 HR 最免疫的空话。</li>
+          <li>建议每条绑一个事实锚点。示例：【学习钻研】→「两周内自学 LangGraph 并完成 X 节点智能体落地」（用学习速度 + 产出证明，而非形容词自证）。</li>
+        </ul>
+      </li>
+
+      <li>
+        <div class="h">细节瑕疵 <span class="badge b-info">低优先级但会被抓</span></div>
+        <ul class="dot">
+          <li><b>数字不一致：</b>「沙盘推演模拟距离、耗时、油费、过路费、天气路况六项指标」——实际只数出 5 类，与「六项」对不上，技术面试中容易被当场抓住。</li>
+          <li><b>中英文混排：</b>注意统一中英文、数字之间的空格风格。</li>
+          <li><b>PDF 字体：</b>当前导出存在字体嵌入告警（FontBBox 问题），部分阅读器可能显示异常。建议用浏览器「打印为 PDF」重新导出，并在多设备上检查。</li>
+        </ul>
+      </li>
+
+    </ol>
+  </div>
+
+  <!-- ================= 四、需要补充的信息清单 ================= -->
+  <div class="card">
+    <div class="sec-title">四、需要补充的信息清单 <em>CHECKLIST</em></div>
+    <ul class="check">
+      <li><b>必填：</b>GPA 或专业排名（应届生第一筛选指标）、两个项目的起止年月、团队人数与你的角色、所有 <span class="ph">__%</span> 量化数据（或删除占位句）</li>
+      <li><b>强烈建议：</b>GitHub 仓库链接（项目开源）、正式证件照、期望工作城市（大模型岗集中在北上深杭，写明可减少 HR 匹配疑虑）</li>
+      <li><b>加分项：</b>四六级具体分数、竞赛 / 获奖（如有）、实习经历——<b>目前简历完全没有实习，这是 2027 届找大模型岗的最大短板，建议尽快补一段（哪怕短期的 AI 相关实习或校内实验室项目）</b></li>
+      <li><b>可选：</b>LeetCode 刷题量或算法博客 / 公众号（投算法应用岗时证明基础）、个人技术博客链接</li>
+    </ul>
+  </div>
+
+  <!-- ================= 五、优先级总览 ================= -->
+  <div class="priority">
+    <div class="sec-title">五、行动优先级总览 <em>PRIORITY</em></div>
+    <div class="p-row">
+      <div class="lv"><span class="badge b-bad">P0 · 投递前必做</span></div>
+      <div class="txt"><b>清空所有占位符</b>：量化数据填真实值或删除；补项目时间、团队人数与角色；填或删 GitHub / 照片行。</div>
+    </div>
+    <div class="p-row">
+      <div class="lv"><span class="badge b-warn">P1 · 强烈建议</span></div>
+      <div class="txt"><b>补齐应届生核心信息</b>：GPA / 专业排名、证件照、期望城市；着手补一段 AI 相关实习。</div>
+    </div>
+    <div class="p-row">
+      <div class="lv"><span class="badge b-info">P2 · 提质</span></div>
+      <div class="txt"><b>强化项目说服力</b>：职责改写为「动作 + 结果」，补充性能 / 准确率 / 规模等可验证结果；个人优势绑定事实锚点。</div>
+    </div>
+    <div class="p-row">
+      <div class="lv"><span class="badge b-good">P3 · 收尾</span></div>
+      <div class="txt"><b>细节校对</b>：修正「六项指标」等数字不一致；统一中英文排版；重新导出 PDF 并多设备检查字体显示。</div>
+    </div>
+  </div>
+
+  <!-- ================= 六、一句话总结 ================= -->
+  <div class="card">
+    <div class="sec-title">六、一句话总结 <em>SUMMARY</em></div>
+    <p style="color:var(--ink2);">
+      结构、篇幅、表达方式的优化已经「合格」，达到了一页纸技术简历的骨架标准；但当前版本还不能直接投递——
+      它本质上是一份「待填写模板」。把占位符全部落实（或删除）、并补上
+      <b>实习 / GitHub / 专业排名</b>这三块应届生核心信息后，这份简历会在同类 2027 届本科生中处于明显领先水平。
+    </p>
+    <div class="note">
+      <strong>提示：</strong>本文件仅作为填写与改进的对照清单，与《陈嘉仪-简历-优化版.html》配合使用；修改简历时请勿把本清单内容混入正式简历。
+    </div>
+  </div>
+
+  <div class="footer">
+    陈嘉仪 · 简历优化建议 · 生成于 2026-09-17
+  </div>
+
+</div>
+</body>
+</html>
